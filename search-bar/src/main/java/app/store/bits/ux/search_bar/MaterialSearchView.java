@@ -31,6 +31,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -48,7 +49,7 @@ import app.store.bits.ux.search_bar.utils.AnimationUtil;
 public class MaterialSearchView extends FrameLayout implements Filter.FilterListener {
     public static final int REQUEST_VOICE = 9999;
 
-    private MenuItem mMenuItem;
+    private ImageView mMenuItem;
     private boolean mIsSearchOpen = false;
     private int mAnimationDuration;
     private boolean mClearingFocus;
@@ -488,15 +489,21 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
      *
      * @param menuItem
      */
-    public void setMenuItem(MenuItem menuItem) {
+    public void setMenuItem(ImageView menuItem) {
         this.mMenuItem = menuItem;
-        mMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        menuItem.setOnClickListener(new OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
+            public void onClick(View view) {
                 showSearch();
-                return true;
             }
         });
+//        mMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                showSearch();
+//                return true;
+//            }
+//        });
     }
 
     /**
